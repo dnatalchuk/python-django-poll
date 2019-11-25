@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: challenge-app-service
+spec:
+  selector:
+    app: challenge-app
+  ports:
+  - protocol: TCP
+    port: 8000
+    targetPort: 8000
+  type: NodePort

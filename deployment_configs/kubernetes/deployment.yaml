@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: challenge-app
+spec:
+  selector:
+    matchLabels:
+      app: challenge-app
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: challenge-app
+    spec:
+      containers:
+      - name: challenge-app
+        image: challenge-app:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000
