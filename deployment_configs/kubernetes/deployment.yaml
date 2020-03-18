@@ -18,3 +18,8 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8000
+        readinessProbe:
+          periodSeconds: 1
+          httpGet:
+            path: /polls/
+            port: 8000

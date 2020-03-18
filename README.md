@@ -1,3 +1,8 @@
+## Prerequisites:
+* `Python 3.7.6`
+* `Docker Desktop version: 2.2.0.4`
+* `kubernetes v1.15.5`
+
 ## 1. Table of contents and structure
 ```
 .
@@ -56,7 +61,7 @@ source challenge-app/bin/activate
 pip install -r requirements.txt
 python3 manage.py runserver
 ```
-* Navigate in browser to http://127.0.0.1:8000/polls/, a poll for voting should be available.
+* Navigate in browser to http://127.0.0.1:30000/polls/, a poll for voting should be available.
 
 ## 4. How to build a docker image and deploy locally minikube:
 * During docker image build, setup and code will be fetched from a remote branch. To have new changes populated into a docker image, the firstly have to be committed and pushed.
@@ -64,11 +69,8 @@ python3 manage.py runserver
 * Kubernetes service manifest will expose locally application;
 * Navigate to directory "deployment_configs/docker_image":
 ```
-minikube start
-eval $(minikube docker-env)
 docker build -t challenge-app .
 kubectl apply -f ../kubernetes/deployment.yaml
 kubectl apply -f ../kubernetes/service.yaml
-minikube service challenge-app-service
 ```
 * In opened a browser window, navigate to /polls URL, a poll for voting should be available.
